@@ -1,5 +1,5 @@
 export async function onRequest(context) {
-  // Ensure only handling POST
+  // Ensure only handling POST ok
   const { request, env } = context;
   if (request.method !== 'POST') {
     return new Response('Method Not Allowed', { status: 405 });
