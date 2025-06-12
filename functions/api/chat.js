@@ -7,7 +7,7 @@ export async function onRequest(context) {
 
   try {
     const { message } = await request.json();
-    const result = await env.AI.run('@cf/meta/llama-2-7b-chat-int8', {
+    const result = await env.AI.run('@hf/mistral/mistral-7b-instruct-v0.2', {
       messages: [{ role: 'user', content: message }]
     });
     return Response.json({ reply: result.choices?.[0]?.message?.content || 'No reply.' });
