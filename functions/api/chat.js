@@ -6,7 +6,7 @@ export async function onRequest(context) {
   }
 
   try {
-   const result = await env.AI.run('@cf/openai/gpt-3.5-turbo', {
+   const result = await env.AI.run('@cf/microsoft/phi-2', {
   messages: [{ role: 'user', content: message }],
   max_tokens: 400
 });
