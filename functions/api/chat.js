@@ -6,10 +6,11 @@ export async function onRequest(context) {
   }
 
   try {
-    const { message } = await request.json();
-    const result = await env.AI.run('@hf/mistral/mistral-7b-instruct-v0.2', {
-      messages: [{ role: 'user', content: message }]
-    });
+   const result = await env.AI.run('@cf/openai/gpt-3.5-turbo', {
+  messages: [{ role: 'user', content: message }],
+  max_tokens: 400
+});
+
     return Response.json({ reply: result.choices?.[0]?.message?.content || 'No reply.' });
   } catch (err) {
     return new Response(`Error: ${err.message}`, { status: 500 });
